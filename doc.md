@@ -65,6 +65,25 @@ Crtl+z 将进程挂起(Suspend), 使用`jobs`命令查看作业号, `bg %作业�
 
 我们的进程现在就在后台运行了, 但我们还想在shell退出后让进程继续运行要怎么做呢? 我们可以使用`disown %作业号 `命令, 让作业忽略**HUP**信号
 
+参考链接 https://www.ibm.com/developerworks/cn/linux/l-cn-nohup
 
 
-> 参考链接 https://www.ibm.com/developerworks/cn/linux/l-cn-nohup
+
+## 内网渗透
+
+### arpspoof (arp欺骗)
+
+```shell
+arpspoof -i 指定网卡 -t 欺骗目标 host -r
+```
+
+`host`参数 要伪装成的主机(一般为网关或者目标主机)
+
+`-r` 双向欺骗, 使用时要先开启ip转发功能, 可以使用 `echo 1 >> /proc/sys/net/ipv4/ip_forward` 命令开启(不加 `-r` 为单向欺骗, 可以利用来做断网攻击)
+
+
+
+**提示**: 可以配合 `driftnet` 工具使用(`dirftnet` 是一个嗅探工具可以嗅探到网络中的图片), 这样就可以观察到目标主机正在游览的图片, 当然你也可以使用别的嗅探工具去获取一些别的信息。
+
+
+
