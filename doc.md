@@ -74,6 +74,7 @@ Crtl+z 将进程挂起(Suspend), 使用`jobs`命令查看作业号, `bg %作业�
 ### arpspoof (arp欺骗)
 
 ```shell
+# 若没有此工具可以请尝试安装 dsniff 包
 arpspoof -i 指定网卡 -t 欺骗目标 host -r
 ```
 
