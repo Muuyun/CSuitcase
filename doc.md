@@ -80,11 +80,9 @@ arpspoof -i 指定网卡 -t 欺骗目标 host -r
 
 `host`参数 要伪装成的主机(一般为网关或者目标主机)
 
-`-r` 双向欺骗, 使用时要先开启ip转发功能, 可以使用 `echo 1 >> /proc/sys/net/ipv4/ip_forward` 命令开启(不加 `-r` 为单向欺骗, 可以利用来做断网攻击)
-
-
+`-r` 双向欺骗, 使用时要先开启路由转发功能, 可以使用 `echo 1 >> /proc/sys/net/ipv4/ip_forward` 命令开启(不加 `-r` 为单向欺骗, 可以利用来做断网攻击, 这样的话就不要开启路由转发功能了)
 
 **提示**: 可以配合 `driftnet` 工具使用(`dirftnet` 是一个嗅探工具可以嗅探到网络中的图片), 这样就可以观察到目标主机正在游览的图片, 当然你也可以使用别的嗅探工具去获取一些别的信息。
 
-
+参考链接 https://wizardforcel.gitbooks.io/daxueba-kali-linux-tutorial/content/58.html
 
