@@ -36,7 +36,10 @@ pkill processName
 tldr 目标命令
 ```
 
+
+
 ## 进程管理
+
 ### 把进程放到后台运行
 
 ```shell
@@ -85,4 +88,46 @@ arpspoof -i 指定网卡 -t 欺骗目标 host -r
 **提示**: 可以配合 `driftnet` 工具使用(`dirftnet` 是一个嗅探工具可以嗅探到网络中的图片), 这样就可以观察到目标主机正在游览的图片, 当然你也可以使用别的嗅探工具去获取一些别的信息。
 
 参考链接 https://wizardforcel.gitbooks.io/daxueba-kali-linux-tutorial/content/58.html
+
+
+
+## 修改MAC地址
+
+可以使用 `iproute2` 和 `macchanger` 这两个工具包修改 MAC 地址
+#### iproute2
+```shell
+# 查看当前网卡mac
+ip link show interface
+# 修改前需要先禁用网卡
+ip link set dev interface down
+# 修改网卡mac地址
+ip link set  dev interface address XX:XX:XX:XX:XX:XX
+# 重新启用网卡
+ip link set dev iinterface up
+```
+**注意** : MAC 地址每个字节必须为16进制. MAC 地址的后三个字节可以随便设置, 但前三个字节随便设置的话, 有的网络运营商可能拒绝为不正确的 MAC 分配 IP 地址
+
+### macchanger
+```shell
+# MAC 地址完全随机
+macchanger -r  interface
+# MAC 地址随机后三位字节
+macchanger -e interface
+# 修改成指定 MAC 地址
+macchanger --mac=XX:XX:XX:XX:XX:XX
+# 恢复成原来的 MAC 地址
+macchanger  -p interface
+```
+
+//todolist
+
+##无线渗透
+
+###解除认证攻击
+
+```
+
+```
+
+
 
