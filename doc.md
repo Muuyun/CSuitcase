@@ -38,6 +38,15 @@ tldr 目标命令
 
 
 
+### hexyl (文件十六进制查看工具)
+
+```shell
+# 使用方式
+hexyl file
+```
+
+
+
 ## 进程管理
 
 ### 把进程放到后台运行
@@ -89,12 +98,11 @@ arpspoof -i 指定网卡 -t 欺骗目标 host -r
 
 参考链接 https://wizardforcel.gitbooks.io/daxueba-kali-linux-tutorial/content/58.html
 
-
-
-## 修改MAC地址
+### 修改MAC地址
 
 可以使用 `iproute2` 和 `macchanger` 这两个工具包修改 MAC 地址
 #### iproute2
+
 ```shell
 # 查看当前网卡mac
 ip link show interface
@@ -107,7 +115,7 @@ ip link set dev iinterface up
 ```
 **注意** : MAC 地址每个字节必须为16进制. MAC 地址的后三个字节可以随便设置, 但前三个字节随便设置的话, 有的网络运营商可能拒绝为不正确的 MAC 分配 IP 地址
 
-### macchanger
+#### macchanger
 ```shell
 # MAC 地址完全随机
 macchanger -r  interface
