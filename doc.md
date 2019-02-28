@@ -155,3 +155,64 @@ macchanger  -p interface
 
 
 
+## Git 
+
+### git reset
+
+```shell
+# 只移动HEAD分支的指向
+git reset --soft 指定commit
+# 不仅移动了HEAD分支的指向还更新了暂存区, --mixed为默认参数
+git reset --mixed 指定commit
+# 更新了HEAD分支的指向、暂存区、工作区
+git reset --hard 指定commit
+# 带路径的reset, 不会移动HEAD分支,只从HEAD分支中复制file.txt到暂存区中, 不能指定--soft
+# --mixed 为默认参数。默认指定HEAD分支, 这样可以取消暂存区的修改, 也可以指定别的
+git reset --mixed file.txt
+# 比--mixed 多更新了工作区
+git reset --hard file.txt
+
+# 可以利用reset --soft 移动HEAD的功能作出更灵活的运用比如压缩提交
+# 先把HEAD往后移动两个commit， 利用此时暂存区和工作区还是之前的样子, 然后再commit一次就可以实现压缩两个提交了
+git reset --soft HEAD~2
+git commit -m "压缩前两个提交"
+```
+
+
+
+### git commit 
+
+```shell
+# 修改上一次提交的信息
+# 小技巧 : 如果你commit之后又想再提交一些别的修改但又不想再搞多一次commit, 你可以先git add 你要提交的再执行下面的命令, 效果相当于将两次commit合并在一起还能修改提交信息, 但是如果你push了的话就最好不要这样子做了.
+git commit --amend 
+```
+
+### git grep
+
+```shell
+# 在当前工作目录下查找指定字符串或者正则表达式
+#  参数: -n 输出行号 --count 输出匹配个数
+git grep 12312
+```
+
+### git stash
+
+```shell
+# 有时，当你在项目的一部分上已经工作一段时间后，所有东西都进入了混乱的状态，而这时你想要切换到另一个分支做一点别的事情。 问题是，你不想仅仅因为过会儿回到这一点而为做了一半的工作创建一次提交。 针对这个问题的答案是 git stash 命令。
+# 储藏会处理工作目录的脏的状态 - 即，修改的跟踪文件与暂存改动 - 然后将未完成的修改保存到一个栈上，而你可以在任何时候重新应用这些改动。
+# 默认为 git stash save, 储存修改
+git stash 
+# 查看储存
+git stash list
+# 使用储存, 如果不指定储存则使用最近的储存
+git stash apply 指定储存
+# 丢弃储存
+git stash drop 指定储存
+# 应用储存并丢弃它
+git stash pop 指定储存
+```
+
+
+
+> 参考阅读 https://git-scm.com/book/zh/v2
