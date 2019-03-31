@@ -26,6 +26,17 @@ pkill processName
 ```
 > 结束指定进程
 
+### cut 字符串处理
+
+```shell
+# -d 指定分隔符
+# -f 指定个数
+# 将输出aa bbb,fff
+echo "aa bbb,fff wwww" | cut -d " " -f1-2
+```
+
+
+
 ### 容器
 
 ### docker(todo)
@@ -60,6 +71,15 @@ tldr 目标命令
 # 使用方式
 hexyl file
 ```
+
+### objdump (二进制文件分析)
+
+````shell
+# 反汇编代码段
+objdump -d 指定文件
+# 显示符号列表
+objdump -t 指定文件
+````
 
 
 
@@ -151,6 +171,14 @@ macchanger  -p interface
 
 ```
 
+```
+
+
+
+### SYN flood 攻击
+
+```shell
+hping3 -S --flood --rand-source 192.168.1.1
 ```
 
 
