@@ -241,6 +241,6 @@ git stash drop 指定储存
 git stash pop 指定储存
 ```
 
-
+![](D:\_system\document\download\常用git命令清单.png)
 
 > 参考阅读 https://git-scm.com/book/zh/v2
